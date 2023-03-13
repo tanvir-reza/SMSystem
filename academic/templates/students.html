@@ -1,0 +1,41 @@
+{% extends 'basic.html' %}
+
+{% block title %}{% endblock title %}
+
+
+{% block body %}
+<div class="container p-5">
+<h1 class="text-center mb-5">Students</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Roll</th>
+      <th scope="col">Class</th>
+      {% if request.user.is_authenticated %}
+      <th scope="col">Actions</th>
+      {% endif %}
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for s in students %}
+    <tr>
+      <td scope="row">{{s.first_name}} {{s.last_name}}</th>
+      <td>{{s.roll_number}}</td>
+      <td>{{s.class_name}}</td>
+      {% if request.user.is_authenticated %}
+      <td>
+        <a href="{% url 'editStudent' s.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'deleteStudent' s.id %}" class="btn btn-danger">Delete</a>
+      </td>
+      {% endif %}
+      
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+
+{% endblock body %}

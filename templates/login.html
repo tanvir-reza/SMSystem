@@ -1,0 +1,47 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+ {% block title %} User Login {% endblock title %}
+  
+ {% block body %}
+<section class="mt-5 container">
+  <div class="d-flex justify-content-center">
+    <div class="card h-100 w-50 bg-white" style="width: 18rem">
+      <img
+        class="card-img-top w-25 mx-auto mt-3"
+        src="{% static 'images/search-client.png' %}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h1 class="card-title text-center font-weight-bold">Account Login</h1>
+        <p class="card-text text-center text-muted">
+          Hello Developer, Welcome Back!!
+        </p>
+
+        <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+                      <label for="username">Username:</label>
+                      <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password:</label>
+                      <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+                    </div>
+                    <div class="row  mt-4 ">
+                        <div class="col">
+                        <button class="btn btn-secondary" type="submit">Login</button>
+                        </div>
+                        <div class="col">
+                            <a class="text-info" href="">Forget Password?</a>
+                        </div>
+                        </div>
+                        <p class="mt-2">Don't have an Account?</p>
+                        <a class="mb-5 text-info font-weight-bold"  href="{% url 'signup' %}">Sign Up</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% endblock body %}
+</section>

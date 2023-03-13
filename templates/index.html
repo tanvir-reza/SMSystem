@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+
+{% block title %}SMS{% endblock title %}
+
+{% block body %}
+
+
+<!-- Body  -->
+
+
+
+
+
+<div class="container mt-5 p-2">
+  
+  {% for s in students %}
+  <p>{{s.first_name}}</p>
+  {% endfor %}
+  <form action="" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Send" class="btn btn-primary">
+  </form>
+</div>
+
+
+<!-- Body -->
+
+
+{% endblock body %}
